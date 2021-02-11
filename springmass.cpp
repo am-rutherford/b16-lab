@@ -66,7 +66,14 @@ void Mass::step(double dt)
   Vector2 acc = force / mass ;
   position = position + velocity * dt + 0.5*acc*dt*dt;
   velocity = velocity + dt * acc ;
+  if (xmin + radius >= position.x || position.x >= xmax - radius) {
+    velocity.x=-velocity.x ;
+  } 
+  if (ymin + radius >= position.y || position.y >= ymax - radius) {
+    velocity.y=-velocity.y ;
+  } 
 }
+
 
 /* ---------------------------------------------------------------- */
 // class Spring
